@@ -1,31 +1,27 @@
-# Filmic Resolve - NOT FULLY WORKING
-## TL;DR
-Encode to Filmic Log Base Encoding, and apply the contrasts as you desire. Do not try to use EXRs as it will be the wrong transform currently.
+# Filmic Resolve & Fusion
+
 ## What is it?
-This is a repository to use [Filmic](https://github.com/sobotka/filmic-blender) in Resolve. It will allow you to
-work seamlessly in Resolve wiith Filmic Base Log Encoded files.
+This is a repository to use [Filmic](https://github.com/sobotka/filmic-blender) in Fusion / Resolve. It will allow you to work with Filmic Base Log Encoded or linear files.
+
+## Why?
+Sadly Fusion / Resolve 17 broke  [Troy Sabotkas Filmic Resolve](https://github.com/sobotka/filmic-resolve/fork) because Cube Luts get weird artifacts when used with values >1. Also ocio Looks (Filmics Low- / High Contrast Looks) apparently don't work with Fusion. This Repository solves this by providing 7 different config.io files to get all contrast Looks to work inside Fusion.
+
 ## How is it used?
-1. Download this repository via zip or Git.
-2. Create a unique directory `Filmic` under your Resolve LUTs director. This is accessible via
-the `File` `Project Settings` `Color Management` tab, by pressing the button `Open LUT Folder`.
-3. Extract and copy the LUTs into the newly created Resolve `Filmic` folder. After doing so, return
-to Resolve and press the `Update Lists` button directly above the `Open LUT Folder`.
-4. In the `File` `Project Settings` `Color Management` tab, change the `Timeline Color Space` to `Rec.709 (Scene)`.
-5. In the same tab, change the `3D Input Lookup Table` to `Filmic Resolve - Base Log Encoding to Scene Linear`.
-6. In the same tab, change the `3D Output Lookup Table` to `Filmic Resolve - Scene Linear to Base Log Encoding`.
 
-You are ready to go!
-## What encodings are currently supported?
-Currently, any Filmic Base Log Encoding files should work seamlessly. Simply save your imagery with the Filmic Base Log
-Encoding, and load them into your media gallery within Resolve. Once inside Resolve, the default output will be displayed
-with the flatter Filmic Base Log Encoding appearance, ~~and the full selection of Filmic aesthetic lookups are available
-from the `Color` workspace, under the `LUTs` sub-workspace. Select an aesthetic contrast and you can refine the grade accordingly.~~
+![doc img](doc/doc1.jpg)
 
-The Fusion tab within Resolve should receive the Timeline based scene linear radiometric data as well, allowing you to
-perform proper radiometrically referred compositing.
+1. Download the latest Release.
+2. Extract it anywhere
+3. In Fusion, add your Source Footage (should be linear exr Files).
+4. Then add two OCIO Colorspace Nodes.
 
-## What currently isn't supported?
-Currently the aesthetic contrast lookups are not working. In addition to this, loading directly from scene linear EXRs is not yet supported.
+> In the first one: Load the *config_4_default.ocio* File (or one of the others - doesn't matter here), set Source Space to Linear and Output Space to Filmic Log.
+
+> In the second one, choose the config....ocio File you want from the seven contrast options and set Source Space to Filmic Log and Output Space to Filmic sRGB.
+
+5. All your Color Correction should happen in Filmic Log colorspace - between the two Nodes. If you render directly in Filmic Log space, you can of course skip the first OCIO Node.
+
+6. You can then connect the second OCIO Node to a saver or do whatever with it.
 
 ## What is the colourimetry of Filmic?
 Please see the original repository for full colourimetry information.
