@@ -4,7 +4,7 @@
 This is a repository to use [Filmic](https://github.com/sobotka/filmic-blender) in Fusion / Resolve. It will allow you to work with Filmic Base Log Encoded or linear files.
 
 ## Why?
-Sadly Fusion / Resolve 17 broke  [Troy Sabotkas Filmic Resolve](https://github.com/sobotka/filmic-resolve/fork) because Cube Luts get weird artifacts when used with values >1. Also ocio Looks (Filmics Low- / High Contrast Looks) apparently don't work with Fusion. This Repository solves this by providing 7 different config.io files to get all contrast Looks to work inside Fusion.
+Sadly Fusion / Resolve 17 broke  [Troy Sabotkas Filmic Resolve](https://github.com/sobotka/filmic-resolve) because Cube Luts get weird artifacts when used with values >1. Also ocio Looks (Filmics Low- / High Contrast Looks) apparently don't work with Fusion. This Repository solves this by providing 7 different config.io files to get all contrast Looks to work inside Fusion.
 
 ## How is it used?
 
