@@ -10,7 +10,7 @@ Sadly Fusion / Resolve 17 broke  [Troy Sabotkas Filmic Resolve](https://github.c
 
 ![doc img](doc/doc1.jpg)
 
-1. Download the latest Release.
+1. [Download the latest Release](https://github.com/SimonStorlSchulke/filmic-resolve-fusion/releases/tag/release).
 2. Extract it anywhere
 3. In Fusion, add your Source Footage (should be linear exr Files).
 4. Then add two OCIO Colorspace Nodes.
@@ -19,9 +19,12 @@ Sadly Fusion / Resolve 17 broke  [Troy Sabotkas Filmic Resolve](https://github.c
 
 > In the second one, choose the config....ocio File you want from the seven contrast options and set Source Space to Filmic Log and Output Space to Filmic sRGB.
 
-5. All your Color Correction should happen in Filmic Log colorspace - between the two Nodes. If you render directly in Filmic Log space, you can of course skip the first OCIO Node.
+5. All your Color Correction should happen in Filmic Log colorspace - between the two Nodes. If you render directly in Filmic Log space, you can of course skip the first OCIO Node. If you don't do any colorcorrection, you can also directly convert from linear to Filmic sRGB.
 
 6. You can then connect the second OCIO Node to a saver or do whatever with it.
+
+> **Tipp** You can also preview in Filmic sRGB via Fusions LUT View. Enable it, choose OCIO ColorSpace View LUT, click Edit, choose the File, set Output Space to Filmim sRGB and input space to linear or Fiolmic log (depending on what colorspace you want to view with it.)  
+![doc img](doc/doc2.jpg)
 
 ## What is the colourimetry of Filmic?
 Please see the original repository for full colourimetry information.
